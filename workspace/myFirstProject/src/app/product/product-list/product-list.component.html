@@ -1,11 +1,29 @@
-<p>product-list works!</p>
-<table class="table bordered">
-    <tr>
-        <td>Id</td>
-        <td>Nom</td>
-        <td>Type</td>
-        <td>Prix</td>
-        <td>&nbsp;</td>
-    </tr>
+<H1>{{title}}</H1>
 
-</table>
+<div class="table-responsive">
+  <table class="table" border="1" *ngIf ="products " >
+    <thead>
+      <tr> 
+        <td>Image</td>
+        <td>Nom</td>
+        <td>Code</td>
+        <td>Date</td>
+        <td>Description</td>
+        <td>Prix</td>
+        <td>Evaluations</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products"> 
+        <td><img src ="{{product.imageUrl}}" width = 40px/></td>
+        <td>{{product.productName}}</td>
+        <td>{{product.productCode}}</td>
+        <td>{{product.releaseDate}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.starRating}}</td>
+        
+      </tr>      
+    </tbody>
+  </table>
+</div>
