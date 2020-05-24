@@ -1,16 +1,27 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Produits}   from './product-list';
 import { $ } from 'protractor';
+
+
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
-    title :string = "Liste des produits";
 
-    products = [
+
+export class ProductListComponent {
+
+    title: string = "Liste des produits";
+    showImage: boolean = true;
+    searchTerms: string = '';
+
+    toggleImage(): void {
+        this.showImage = !this.showImage;
+    };
+
+    products: Produits[]=  [
         {
             "id": 1,
             "productName": "Leaf Rake",
@@ -61,13 +72,6 @@ export class ProductListComponent {
             "starRating": 4.6,
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
         }
-    ];
-    showImage : boolean = true;
-
-    searchTerms : string = '';
-
-    toggleImage($event) : void {
-        console.log($event);
-        this.showImage = !this.showImage;
-    }
+    ]
+    
 }

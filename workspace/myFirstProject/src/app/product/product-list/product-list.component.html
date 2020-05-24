@@ -2,12 +2,13 @@
 <div class="container-fluid">
   <div class="row mb-3">
     <div class="col">   
-      <input [(ngModel)]= "searchTerms" />
+      <label class="">Recherche</label>
+      <input class="" [(ngModel)]= "searchTerms" type="text" />      
     </div>
   </div>
-  <button class="btn btn-primary btn-sm mb-3" (click)="toggleImage($event)" >Masquez les images</button>
+  <button class="btn btn-primary btn-sm mb-3" (click)="toggleImage()" >Masquez les images</button>
   <div class="table-responsive">
-    <table class="table" border="1" *ngIf ="products " >
+    <table class="table" border="1" *ngIf ="products.length && products " >
       <thead>
         <tr> 
           <td *ngIf="showImage">Image</td>
@@ -20,9 +21,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products" >
+        <tr *ngFor="let product of products " >
           <td class="text-center" *ngIf="showImage">
-            <img [src]="product.imageUrl" width="70px" class="img-thumbnail" />            
+            <img [src]="product.imageUrl" [alt]="product.productName" width="70px" class="img-thumbnail" />            
           </td>
           <td>{{product.productName}}</td>
           <td>{{product.productCode}}</td>
@@ -33,5 +34,7 @@
         </tr>      
       </tbody>
     </table>
+    
+    <p *ngIf="products.length == 0">Aucun produit disponible</p>
   </div>
 </div>
