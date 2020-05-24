@@ -1,29 +1,37 @@
 <H1>{{title}}</H1>
-
-<div class="table-responsive">
-  <table class="table" border="1" *ngIf ="products " >
-    <thead>
-      <tr> 
-        <td>Image</td>
-        <td>Nom</td>
-        <td>Code</td>
-        <td>Date</td>
-        <td>Description</td>
-        <td>Prix</td>
-        <td>Evaluations</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products"> 
-        <td><img src ="{{product.imageUrl}}" width = 40px/></td>
-        <td>{{product.productName}}</td>
-        <td>{{product.productCode}}</td>
-        <td>{{product.releaseDate}}</td>
-        <td>{{product.description}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.starRating}}</td>
-        
-      </tr>      
-    </tbody>
-  </table>
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col">   
+      <input [(ngModel)]= "searchTerms" />
+    </div>
+  </div>
+  <button class="btn btn-primary btn-sm mb-3" (click)="toggleImage($event)" >Masquez les images</button>
+  <div class="table-responsive">
+    <table class="table" border="1" *ngIf ="products " >
+      <thead>
+        <tr> 
+          <td *ngIf="showImage">Image</td>
+          <td>Nom</td>
+          <td>Code</td>
+          <td>Date</td>
+          <td>Description</td>
+          <td>Prix</td>
+          <td>Evaluations</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products" >
+          <td class="text-center" *ngIf="showImage">
+            <img [src]="product.imageUrl" width="70px" class="img-thumbnail" />            
+          </td>
+          <td>{{product.productName}}</td>
+          <td>{{product.productCode}}</td>
+          <td>{{product.releaseDate}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.starRating}}</td>          
+        </tr>      
+      </tbody>
+    </table>
+  </div>
 </div>
