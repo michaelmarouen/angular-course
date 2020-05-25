@@ -18,19 +18,7 @@ export class ProductListComponent {
     public searchTerms: string = '';
     public widthImage: number = 70 ;
 
-    toggleImage(): void {
-        this.showImage = !this.showImage;
-    }
-
-    zoomImage(zoom) : void{
-        if (this.widthImage == 70){
-            this.widthImage =  this.widthImage + zoom;
-        }else{
-            this.widthImage =  this.widthImage - zoom;
-        }
-    }
-
-    products: Produits[]=  [
+    public products: Produits[]=  [
         {
             "id": 1,
             "productName": "Leaf Rake",
@@ -82,5 +70,25 @@ export class ProductListComponent {
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
         }
     ]
+    toggleImage(): void {
+        this.showImage = !this.showImage;
+    }
+
+    zoomImage(zoom): void{
+        if (this.widthImage == 70){
+            this.widthImage =  this.widthImage + zoom;
+        }else{
+            this.widthImage =  this.widthImage - zoom;
+        }
+    }
+
+    getFilteredProducts(): Produits[]{
+        const term = this.searchTerms.toLowerCase()       
+        return this.products.filter(product => {
+            const name = product.productName.toLowerCase()
+            return name.indexOf(term) > -1
+        })
+    }
+    
     
 }
