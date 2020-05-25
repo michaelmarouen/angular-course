@@ -79,13 +79,13 @@ export class ProductListComponent {
         this.showImage = !this.showImage;
     }
 
-    zoomImage(zoom): void{
-        
-        if (this.widthImage == 70){
-            this.widthImage =  this.widthImage + zoom;
-        }else{
-            this.widthImage =  this.widthImage - zoom;
-        }
+    zoomImage(monImage): void{
+        const imageId = this.products.find( product=>{
+            const idProduit = product.id
+            return idProduit == monImage
+        })
+        const zoom = imageId.zoom;
+        imageId.zoom = !zoom ;
     }
 
     getFilteredProducts(): Produits[]{
