@@ -23,7 +23,8 @@
       <tbody>
         <tr *ngFor="let product of products " >
           <td class="text-center" *ngIf="showImage">
-            <img [src]="product.imageUrl" [alt]="product.productName" width="70px" class="img-thumbnail" />            
+            <ngbd-carousel-basic></ngbd-carousel-basic>      
+            <img [src]="product.imageUrl" [alt]="product.productName" (click)="zoomImage(100)"  [width]="widthImage" class="img-thumbnail" />           
           </td>
           <td>{{product.productName}}</td>
           <td>{{product.productCode}}</td>

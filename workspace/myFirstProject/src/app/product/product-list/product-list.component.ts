@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Produits}   from './product-list';
+import { NgbdCarouselBasic } from './carousel-basic';
 import { $ } from 'protractor';
 
 
@@ -10,16 +11,24 @@ import { $ } from 'protractor';
   styleUrls: ['./product-list.component.css']
 })
 
-
 export class ProductListComponent {
 
-    title: string = "Liste des produits";
-    showImage: boolean = true;
-    searchTerms: string = '';
+    public title: string = "Liste des produits";
+    public showImage: boolean = true;
+    public searchTerms: string = '';
+    public widthImage: number = 70 ;
 
     toggleImage(): void {
         this.showImage = !this.showImage;
-    };
+    }
+
+    zoomImage(zoom) : void{
+        if (this.widthImage == 70){
+            this.widthImage =  this.widthImage + zoom;
+        }else{
+            this.widthImage =  this.widthImage - zoom;
+        }
+    }
 
     products: Produits[]=  [
         {

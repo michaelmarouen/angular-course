@@ -9,6 +9,7 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { StarComponent } from './shared/ui/star/star.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdCarouselBasic } from './product/product-list/carousel-basic';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductListComponent,
     ProductDetailComponent,
     StarComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    NgbdCarouselBasic
   ],
   imports: [
     BrowserModule,
