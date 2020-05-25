@@ -1,14 +1,20 @@
 
-<div class="container">
-  <H1>{{title}}</H1>
+<div class="container-fluid">
+
   <div class="row mb-3">
-    <div class="col">   
+    <div class=" offset-2 col-8">   
+      
+      <H1>{{title}}</H1>
       <label class="">Recherche</label>
       <input class="" [(ngModel)]= "searchTerms" type="text" />      
     </div>
   </div>
-  <button class="btn btn-primary btn-sm mb-3" (click)="toggleImage()" >Masquez les images</button>
-  <div class="table-responsive">
+  <div class="row mb-3">
+    <div class=" offset-2 col-8">  
+      <button class="btn btn-primary btn-sm mb-3" (click)="toggleImage()" >Masquez les images</button>
+    </div>
+  </div>
+  <div class="table-responsive offset-2 col-8">
     <table class="table" border="1" *ngIf ="products.length && products " >
       <thead>
         <tr> 
@@ -25,7 +31,7 @@
         <!-- Sans Pipe <tr *ngFor="let product of products; index as i; " > -->
         <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
         <tr *ngFor="let product of products | productSearch:searchTerms;">
-          <td *ngIf="showImage">
+          <td *ngIf="showImage" class="text-center">
             <ul class="carousel-items-exp" >
               <li class="carousel-item-exp" *ngFor = "let image of product.imageUrl; index as i;">
                 <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 50 : widthImage " class="img-thumbnail" />                                                            
@@ -40,7 +46,9 @@
           <td>{{product.releaseDate}}</td>
           <td>{{product.description}}</td>
           <td>{{product.price}}</td>
-          <td><app-star></app-star></td>          
+          <td>
+            <app-star [(rating)] = product.starRating (ratingChanged)="product.starRating = $event"></app-star>
+          </td>          
         </tr>      
       </tbody>
     </table>
