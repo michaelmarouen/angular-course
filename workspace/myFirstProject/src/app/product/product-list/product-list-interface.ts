@@ -7,4 +7,5 @@ export interface Produits{
     price : number;
     starRating : number;
     imageUrl : string;
+    zoom : boolean;
 }

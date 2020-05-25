@@ -21,10 +21,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of getFilteredProducts() " >
+        <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
+        <tr *ngFor="let product of products | productSearch:searchTerms; index as i;">
           <td class="text-center" *ngIf="showImage">
-            <ngbd-carousel-basic></ngbd-carousel-basic>      
-            <img [src]="product.imageUrl" [alt]="product.productName" (click)="zoomImage(100)"  [width]="widthImage" class="img-thumbnail" />           
+            <!--<ngbd-carousel-basic></ngbd-carousel-basic> -->     
+            <img [src]="product.imageUrl" [alt]="product.productName" (click)="zoomImage(i)"  [width]="widthImage" class="img-thumbnail" />           
           </td>
           <td>{{product.productName}}</td>
           <td>{{product.productCode}}</td>
