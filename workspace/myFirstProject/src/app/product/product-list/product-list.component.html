@@ -1,5 +1,6 @@
-<H1>{{title}}</H1>
-<div class="container-fluid">
+
+<div class="container">
+  <H1>{{title}}</H1>
   <div class="row mb-3">
     <div class="col">   
       <label class="">Recherche</label>
@@ -21,28 +22,25 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Sans Pipe <tr *ngFor="let product of products; index as i; " > -->
         <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
         <tr *ngFor="let product of products | productSearch:searchTerms;">
-          <td class="text-center" *ngIf="showImage">
-            <div class="col-4">
-              <ul class="carousel-items-exp" >
-                  <li class="carousel-item-exp" *ngFor = "let image of product.imageUrl; index as i;">
-                      <div class="card div-carousel{{i+1}}">
-                          <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 100 : widthImage " class="img-thumbnail" />                                       
-                      </div>
-                  </li>
-              </ul>
-            </div>
-          <!--<div class="float-left carrousel{{i}}">
-                <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 100 : widthImage " class="img-thumbnail" />           
-              </div>-->
+          <td *ngIf="showImage">
+            <ul class="carousel-items-exp" >
+              <li class="carousel-item-exp" *ngFor = "let image of product.imageUrl; index as i;">
+                <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 50 : widthImage " class="img-thumbnail" />                                                            
+              </li>
+            </ul>
+            <!--<div class="float-left carrousel{{i}}">
+              <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 100 : widthImage " class="img-thumbnail" />           
+            </div>-->
           </td>
           <td>{{product.productName}}</td>
           <td>{{product.productCode}}</td>
           <td>{{product.releaseDate}}</td>
           <td>{{product.description}}</td>
           <td>{{product.price}}</td>
-          <td>{{product.starRating}}</td>          
+          <td><app-star></app-star></td>          
         </tr>      
       </tbody>
     </table>

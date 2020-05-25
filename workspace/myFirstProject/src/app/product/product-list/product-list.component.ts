@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { Produits}   from './product-list-interface';
-import { $ } from 'protractor';
-
-
 
 @Component({
   selector: 'app-product-list',
@@ -15,7 +12,7 @@ export class ProductListComponent {
     public title: string = "Liste des produits";
     public showImage: boolean = true;
     public searchTerms: string = '';
-    public widthImage: number = 70 ;
+    public widthImage: number = 100 ;
 
     public products: Produits[]=  [
         {
@@ -28,7 +25,7 @@ export class ProductListComponent {
             "starRating": 3.2,
             "imageUrl": [
                 {"url":"http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"},
-                {"url":"http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"},
+                {"url":"http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"},
                 {"url":"http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"}
             ],
             "zoom": false            
@@ -43,7 +40,7 @@ export class ProductListComponent {
             "starRating": 4.2,
             "imageUrl": [
                 {"url":"http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"},
-                {"url":"http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"},
+                {"url":"http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"},
                 {"url":"http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"}
             ],
             "zoom": false            
@@ -99,8 +96,7 @@ export class ProductListComponent {
             const idProduit = product.id
             return idProduit == monImage
         })
-        const zoom = imageId.zoom;
-        imageId.zoom = !zoom ;
+        imageId.zoom = !imageId.zoom ;
     }
 
     getFilteredProducts(): Produits[]{
