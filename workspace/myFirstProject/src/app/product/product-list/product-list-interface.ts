@@ -1,3 +1,7 @@
+export interface iProduits{
+    url : string;
+}
+
 export interface Produits{
     id : number;
     productName : string;
@@ -6,6 +10,6 @@ export interface Produits{
     description : string;
     price : number;
     starRating : number;
-    imageUrl : string;
+    imageUrl : iProduits[];
     zoom : boolean;
 }

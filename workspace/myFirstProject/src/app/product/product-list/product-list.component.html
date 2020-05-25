@@ -24,8 +24,10 @@
         <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
         <tr *ngFor="let product of products | productSearch:searchTerms;">
           <td class="text-center" *ngIf="showImage">
-            <!--<ngbd-carousel-basic></ngbd-carousel-basic> -->     
-            <img [src]="product.imageUrl" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 100 : widthImage " class="img-thumbnail" />           
+            <!--<ngbd-carousel-basic [images] = "product.imageUrl"></ngbd-carousel-basic>-->
+            <div *ngFor = "let image of product.imageUrl">
+              <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 100 : widthImage " class="img-thumbnail" />           
+            </div>
           </td>
           <td>{{product.productName}}</td>
           <td>{{product.productCode}}</td>
