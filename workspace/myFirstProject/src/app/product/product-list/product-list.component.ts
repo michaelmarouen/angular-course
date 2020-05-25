@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Produits}   from './product-list-interface';
-import { NgbdCarouselBasic } from './carousel-basic';
 import { $ } from 'protractor';
 
 

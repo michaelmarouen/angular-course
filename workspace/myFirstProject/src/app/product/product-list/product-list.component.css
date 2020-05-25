@@ -1,0 +1,122 @@
+********************************
+* Basics
+*********************************/
+* {
+    box-sizing: border-box;
+}
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+    color: #3d4852;
+    font-family: 'Muli', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+
+
+ul {
+    margin: 0 0 1.5rem;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+}
+
+svg {
+    fill: currentColor;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+img {
+    height: auto;
+}
+
+p {
+    margin: 0 0 .5rem;
+}
+
+main {
+    padding: 1rem 2rem;
+    margin: auto;
+}
+
+header {
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.card {
+    border: 1px solid #bac6d3;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/********************************
+* Carousel styles
+*********************************/
+.carousel-items-exp {
+    display: flex;
+    overflow-x: scroll;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-item-exp {
+    flex:0 0 150px;
+    margin-left: 1rem;
+    scroll-snap-align: start;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    height: 6px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3d4852;
+    border-radius: 3px;
+}
+
+/********************************
+* Breakpoints
+*********************************/
+@media screen and (min-width: 576px) {
+    .carousel-item-exp {
+        flex-basis: 100px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    body,
+    button,
+    input,
+    select,
+    optgroup,
+    textarea {
+        font-size: 1.125rem;
+    }
+
+    h1 {
+        font-size: 2.75rem;
+    }
+
+    .carousel-item-exp {
+        flex-basis: 100px;
+    }
+}
+
+@med
+

@@ -9,7 +9,6 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { StarComponent } from './shared/ui/star/star.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdCarouselBasic } from './product/product-list/carousel-basic';
 import { ProductSearchPipe } from './product/product-search.pipe';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { ProductSearchPipe } from './product/product-search.pipe';
     ProductDetailComponent,
     StarComponent,
     WelcomeComponent,
-    NgbdCarouselBasic,
     ProductSearchPipe
   ],
   imports: [
