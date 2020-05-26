@@ -1,8 +1,8 @@
-export interface iProduits{
+export interface IiProduits{
     url : string;
 }
 
-export interface Produits{
+export interface IProduits{
     id : number;
     productName : string;
     productCode : string;
@@ -10,6 +10,6 @@ export interface Produits{
     description : string;
     price : number;
     starRating : number;
-    imageUrl : iProduits[];
+    imageUrl : IiProduits[];
     zoom : boolean;
 }
