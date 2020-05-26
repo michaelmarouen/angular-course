@@ -47,6 +47,7 @@
           <td>{{product.description}}</td>
           <td>{{product.price}}</td>
           <td>
+            {{product.starRating}}
             <app-star [(rating)] = product.starRating (ratingChanged)="product.starRating = $event"></app-star>
           </td>          
         </tr>      

@@ -11,7 +11,7 @@ export class StarComponent  {
   @Output() ratingChanged : EventEmitter<number> = new EventEmitter<number>();
 
   clickIt(value : number) :void{ 
-      this.rating = value 
+      //this.rating = value 
       this.ratingChanged.emit(value)
   }
  
