@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IProduits } from 'src/app/shared/model/product-list-interface';
+import { ProductService } from 'src/app/shared/model/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -14,6 +15,11 @@ export class ProductListComponent {
     public widthImage: number = 100 ;
 
     public products: IProduits[]=  [];
+
+    public constructor(public productService: ProductService) {
+        this.products = this.productService.getProducts()
+    }
+    
     toggleImage(): void {
         this.showImage = !this.showImage;
     }
