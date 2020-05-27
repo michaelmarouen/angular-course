@@ -12,15 +12,20 @@ export class Product {
     public imageUrl : IiProduits[];
     public zoom : boolean;
 
-    constructor(products : IProduits){
-        this.id = products.id
-        this.productName = products.productName
-        this.productCode = products.productCode
-        this.releaseDate = products.releaseDate
-        this.description = products.description
-        this.price = products.price
-        this.starRating = products.starRating
-        this.zoom = products.zoom
+    constructor(data: IProduits){
+        this.fromData(data)
+    }
+    
+    private fromData(data: IProduits){
+        this.id = data.id || null
+        this.productName = data.productName || ''
+        this.productCode = data.productCode || ''
+        this.releaseDate = data.releaseDate || ''
+        this.description = data.description || ''
+        this.price = data.price || 0
+        this.starRating = data.starRating|| 0
+        this.imageUrl = data.imageUrl || []
+        this.zoom = data.zoom || false
     }
 
 }
