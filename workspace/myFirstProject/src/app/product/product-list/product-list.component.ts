@@ -17,7 +17,9 @@ export class ProductListComponent {
     public products: IProduits[]=  [];
 
     public constructor(public productService: ProductService) {
-        this.products = this.productService.getProducts()
+        this.products = this.productService.fetch()
+        console.log(this.products)
+        //console.log( this.productService.fetch())
     }
     
     toggleImage(): void {
