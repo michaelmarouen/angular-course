@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -19,12 +20,13 @@ import { ProductSearchPipe } from './product/product-search.pipe';
     ProductDetailComponent,
     StarComponent,
     WelcomeComponent,
-    ProductSearchPipe
+    ProductSearchPipe,    
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    FormsModule
+    FormsModule,   
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
