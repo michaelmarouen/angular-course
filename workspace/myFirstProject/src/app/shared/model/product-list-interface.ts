@@ -1,6 +1,6 @@
-export interface IiProduits{
+/*export interface IiProduits{
     url : string;
-}
+}*/
 
 export interface IProduits{
     id : number;
@@ -10,6 +10,7 @@ export interface IProduits{
     description : string;
     price : number;
     starRating : number;
-    imageUrl : IiProduits[];
+   // imageUrl : IiProduits[];
+   imageUrl : string;
     zoom : boolean;
 }

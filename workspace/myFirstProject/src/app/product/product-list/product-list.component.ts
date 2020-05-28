@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IProduits } from 'src/app/shared/model/product-list-interface';
 import { ProductService } from 'src/app/shared/model/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -14,31 +15,31 @@ export class ProductListComponent {
     public searchTerms: string = '';
     public widthImage: number = 100 ;
 
-    public products: IProduits[]=  [];
+    public products$: Observable<IProduits[]>;
 
-    public constructor(public productService: ProductService) {
-        this.products = this.productService.getProducts$()
+    public constructor(private  productService: ProductService) {
+        this.products$ = productService.getProducts$()
     }
     
     toggleImage(): void {
         this.showImage = !this.showImage;
     }
 
-    zoomImage(monImage): void{
-        const imageId = this.products.find( product=>{
+    /*zoomImage(monImage): void{
+        const imageId = this.products$.find( product=>{
             const idProduit = product.id
             return idProduit == monImage
         })
         imageId.zoom = !imageId.zoom ;
     }
-
-    getFilteredProducts(): IProduits[]{
+*/
+   /* getFilteredProducts(): IProduits[]{
         const term = this.searchTerms.toLowerCase()       
         return this.products.filter(product => {
             const name = product.productName.toLowerCase()
             return name.indexOf(term) > -1
         })
-    }
+    }*/
     
     
 }

@@ -15,45 +15,49 @@
     </div>
   </div>
   <div class="table-responsive offset-2 col-8">
-    <table class="table" border="1" *ngIf="products$ | async as products">
-      <thead>
-        <tr> 
-          <td *ngIf="showImage">Image</td>
-          <td>Nom</td>
-          <td>Code</td>
-          <td>Date</td>
-          <td>Description</td>
-          <td>Prix</td>
-          <td>Evaluations</td>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Sans Pipe <tr *ngFor="let product of products; index as i; " > -->
-        <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
-        <tr *ngFor="let product of products ">
-          <td *ngIf="showImage" class="text-center">
-            <ul class="carousel-items-exp" >
-              <li class="carousel-item-exp" *ngFor = "let image of product.imageUrl; index as i;">
-                <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 50 : widthImage " class="img-thumbnail" />                                                            
-              </li>
-            </ul>
-            <!--<div class="float-left carrousel{{i}}">
-              <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 100 : widthImage " class="img-thumbnail" />           
-            </div>-->
-          </td>
-          <td>{{product.productName}}</td>
-          <td>{{product.productCode}}</td>
-          <td>{{product.releaseDate}}</td>
-          <td>{{product.description}}</td>
-          <td>{{product.price}}</td>
-          <td>
-            {{product.starRating}}
-            <app-star [(rating)] = product.starRating (ratingChanged)="product.starRating = $event"></app-star>
-          </td>          
-        </tr>      
-      </tbody>
-    </table>
-    
+    <div *ngIf="products$ | async as products">
+      <!-- Here your code can use products variable as a Product[] -->
+   
+        <table class="table" border="1" *ngIf ="products.length > 0;  else noProductTemplate" >
+     
+        <thead>
+          <tr> 
+            <td *ngIf="showImage">Image</td>
+            <td>Nom</td>
+            <td>Code</td>
+            <td>Date</td>
+            <td>Description</td>
+            <td>Prix</td>
+            <td>Evaluations</td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Sans Pipe <tr *ngFor="let product of products; index as i; " > -->
+          <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
+          <tr *ngFor="let product of products ">
+            <td *ngIf="showImage" class="text-center">
+            <!--  <ul class="carousel-items-exp" >
+                <li class="carousel-item-exp" *ngFor = "let image of product$.imageUrl; index as i;">
+                  <img [src]="image.url" [alt]="product.productName" (click)="zoomImage(product.id)"  [width]="product.zoom ? widthImage + 50 : widthImage " class="img-thumbnail" />                                                            
+                </li>
+              </ul>-->
+              <div class="float-left">
+                <img [src]="product.imageUrl" [alt]="product.productName"   [width]="product.zoom ? widthImage + 100 : widthImage " class="img-thumbnail" />           
+              </div>
+            </td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productCode}}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>
+              {{product.starRating}}
+              <app-star [(rating)] = product.starRating (ratingChanged)="product.starRating = $event"></app-star>
+            </td>          
+          </tr>      
+        </tbody>
+      </table>
+    </div>
     <ng-template #noProductTemplate>
       <p>Aucun produit disponible</p>
     </ng-template>

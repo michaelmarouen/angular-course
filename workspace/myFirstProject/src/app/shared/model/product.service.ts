@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from './product';
 import { map, tap } from 'rxjs/operators'
 import { Observable, BehaviorSubject } from 'rxjs';
-import { $ } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +21,8 @@ export class ProductService {
   public fetch() {
     this.http.get<IProduits[]>('http://localhost:3000/products').pipe(
       map(products => products.map(product => new Product(product))),
-      tap(product => console.log(`Products (${product.length})`))
-    ).subscribe()
+      tap(products => console.log(`Products (${products.length})`))
+    ).subscribe(products => this._products.next(products))
   }
 
  /* getProducts(): IProduits []{

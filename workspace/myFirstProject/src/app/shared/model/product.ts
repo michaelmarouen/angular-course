@@ -1,4 +1,4 @@
-import{ IProduits, IiProduits} from './product-list-interface';
+import{ IProduits} from './product-list-interface';
  
 export class Product {    
 
@@ -9,7 +9,8 @@ export class Product {
     public description : string;
     public price : number;
     public starRating : number;
-    public imageUrl : IiProduits[];
+    //public imageUrl : IiProduits[];
+    public imageUrl : string;
     public zoom : boolean;
 
     constructor(data: IProduits){
@@ -24,8 +25,10 @@ export class Product {
         this.description = data.description || ''
         this.price = data.price || 0
         this.starRating = data.starRating|| 0
-        this.imageUrl = data.imageUrl || []
+        //this.imageUrl = data.imageUrl ? this.imageUrl(data.imageUrl.url): {} || []
+        this.imageUrl = data.imageUrl || ''
         this.zoom = data.zoom || false
+        
     }
 
 }
