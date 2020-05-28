@@ -22,6 +22,7 @@
      
         <thead>
           <tr> 
+            <td>#</td>
             <td *ngIf="showImage">Image</td>
             <td>Nom</td>
             <td>Code</td>
@@ -35,6 +36,9 @@
           <!-- Sans Pipe <tr *ngFor="let product of products; index as i; " > -->
           <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
           <tr *ngFor="let product of products ">
+            <td> 
+              <a  [routerLink] = " [product.id] " > # {{product.id}} </a> 
+            </td>
             <td *ngIf="showImage" class="text-center">
             <!--  <ul class="carousel-items-exp" >
                 <li class="carousel-item-exp" *ngFor = "let image of product$.imageUrl; index as i;">
