@@ -122,9 +122,13 @@
     display: block;
     background: #fff;
   }
-  
+  .activated{
+    background: #fff;
+    color: #666;
+    text-shadow: none;
+  }
   /* keeps the tab background white */
-  ul.primary li:hover a {
+ ul.primary li:hover a {
     background: #fff;
     color: #666;
     text-shadow: none;
