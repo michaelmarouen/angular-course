@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="table-responsive offset-2 col-8">
-    <table class="table" border="1" *ngIf ="products  else noProductTemplate" >
+    <table class="table" border="1" *ngIf="products$ | async as products">
       <thead>
         <tr> 
           <td *ngIf="showImage">Image</td>
@@ -30,7 +30,7 @@
       <tbody>
         <!-- Sans Pipe <tr *ngFor="let product of products; index as i; " > -->
         <!-- Sans Pipe <tr *ngFor="let product of getFilteredProducts(); index as i; " > -->
-        <tr *ngFor="let product of products | productSearch:searchTerms;">
+        <tr *ngFor="let product of products ">
           <td *ngIf="showImage" class="text-center">
             <ul class="carousel-items-exp" >
               <li class="carousel-item-exp" *ngFor = "let image of product.imageUrl; index as i;">
@@ -53,8 +53,9 @@
         </tr>      
       </tbody>
     </table>
-    <noProductTemplate>
-      <p *ngIf="products === []">Aucun produit disponible</p>
-    </noProductTemplate>
+    
+    <ng-template #noProductTemplate>
+      <p>Aucun produit disponible</p>
+    </ng-template>
   </div>
 </div>
