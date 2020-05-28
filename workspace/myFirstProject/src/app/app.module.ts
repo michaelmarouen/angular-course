@@ -11,6 +11,8 @@ import { StarComponent } from './shared/ui/star/star.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductSearchPipe } from './product/product-search.pipe';
+import { AppRoutingModule } from './app-routing.module';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { ProductSearchPipe } from './product/product-search.pipe';
     ProductDetailComponent,
     StarComponent,
     WelcomeComponent,
-    ProductSearchPipe,    
+    ProductSearchPipe,
+    ProductComponent,    
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,   
-    HttpClientModule 
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
