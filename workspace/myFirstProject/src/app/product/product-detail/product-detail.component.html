@@ -1,15 +1,13 @@
 <div class="container-fluid">
-
-    <div class="row mb-3">
-      <div class=" offset-2 col-8">   
-        <H1>{{title}}</H1>        
+  <div class="row mb-3">
+    <div class=" offset-2 col-8">   
+      <H1>{{title}}</H1>        
+    </div>
+  </div>
+  <div class="row mb-3">
+      <div class="offset-2 col-8">
+          <button (click)="goToProducts()"  class="btn btn-sm btn-dark"><<-- Liste produits</button>
+          <a [routerLink]="['/products', 1 + 1]" class="btn btn-sm btn-dark float-right" >Produit suivant -->></a>
       </div>
-    </div>
-    <div class="row mb-3">
-        <div class="offset-2 col-8">
-            <button (click)="goToProducts()"  class="btn btn-sm btn-dark"><<-- Liste produits</button>
-            <a [routerLink]="['/products', 1 + 1]" class="btn btn-sm btn-dark float-right" >Produit suivant -->></a>
-        </div>
-    </div>
-
+  </div>
 </div>

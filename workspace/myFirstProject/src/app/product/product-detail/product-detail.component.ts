@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductService } from 'src/app/shared/model/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailComponent  {
   public title: string = "Détails produits"
-  constructor(private router: Router){}
+  constructor(private router: Router, public productService : ProductService, public route: ActivatedRoute){}
 
   goToProducts(){
     this.router.navigate(['/products'])
