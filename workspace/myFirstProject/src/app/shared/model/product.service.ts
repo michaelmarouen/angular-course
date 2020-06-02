@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IProduits } from './product-list-interface';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product';
-import { map, tap } from 'rxjs/operators'
+import { filter, map, tap } from 'rxjs/operators'
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -20,8 +20,7 @@ export class ProductService {
 
   public fetch() {
     this.http.get<IProduits[]>('http://localhost:3000/products').pipe(
-      map(products => products.map(product => new Product(product))),
-      tap(products => console.log(`Products (${products.length})`))
+      map(products => products.map(product => new Product(product)))
     ).subscribe(products => this._products.next(products))
   }
 
@@ -31,5 +30,12 @@ export class ProductService {
 
   public getProducts$(): Observable<IProduits[]>{
     return this.products$
+  }
+
+  public getProductById$(id: number): Observable<IProduits>{
+    return this.products$.pipe(
+      map(products => products.find(product => product.id === id)),
+      tap(products => console.log(`ID :  (${id})`))
+    )
   }
 }

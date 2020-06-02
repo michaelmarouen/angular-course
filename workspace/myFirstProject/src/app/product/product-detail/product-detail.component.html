@@ -2,6 +2,10 @@
   <div class="row mb-3">
     <div class=" offset-2 col-8">   
       <H1>{{title}}</H1>        
+      <div *ngIf="product$ | async as product">
+        <!-- HTML you want -->
+        <pre>{{product | json}}</pre>
+      </div>
     </div>
   </div>
   <div class="row mb-3">
