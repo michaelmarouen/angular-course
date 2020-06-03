@@ -3,15 +3,28 @@
     <div class=" offset-2 col-8">   
       <H1>{{title}}</H1>        
       <div *ngIf="product$ | async as product">
-        <!-- HTML you want -->
-        <pre>{{product | json}}</pre>
+        <div class="card" style="width: 22rem;">
+          <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{product.productName}}</h5>
+            <p class="card-text">
+              <u>Description:</u><br/>
+              {{product.description}}<br/>
+              <u>Code:</u> {{product.productCode}}<br/>
+              <u>Mise en ligne:</u> {{product.releaseDate}}<br/>
+              <u>Prix:</u> {{product.price}}<br/>              
+            </p>            
+          </div>
+          <div class="card-footer">
+            <div class="text-center">
+              {{product.starRating}}<br/>
+              <app-star [(rating)] = product.starRating (ratingChanged)="product.starRating = $event"></app-star><br/>
+            </div>
+            <button (click)="goToProducts()"  class="btn btn-sm btn-dark"><<-- Liste produits</button>
+            <a [routerLink]="['/products', product.id + 1]" class="btn btn-sm btn-dark float-right" >Produit suivant -->></a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row mb-3">
-      <div class="offset-2 col-8">
-          <button (click)="goToProducts()"  class="btn btn-sm btn-dark"><<-- Liste produits</button>
-          <a [routerLink]="['/products', 1 + 1]" class="btn btn-sm btn-dark float-right" >Produit suivant -->></a>
-      </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IProduits } from './product-list-interface';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product';
-import { filter, map, tap } from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Product } from './product';
+import { IProduits } from './product-list-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +32,10 @@ export class ProductService {
     return this.products$
   }
 
-  public getProductById$(id: number): Observable<IProduits>{
-    return this.products$.pipe(
-      map(products => products.find(product => product.id === id)),
-      tap(products => console.log(`ID :  (${id})`))
+  public getProductById$(id: number): Observable<IProduits>{    
+    let produit =  this.products$.pipe(
+      map(products => products.find(product => product.id === id))
     )
+    return produit;
   }
 }
