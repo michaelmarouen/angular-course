@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductSearchPipe } from './product/product-search.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductComponent } from './product/product.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,14 @@ import { ProductComponent } from './product/product.component';
     StarComponent,
     WelcomeComponent,
     ProductSearchPipe,
-    ProductComponent,    
+    ProductComponent,
+    ProductEditComponent,    
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,   
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
   ],
