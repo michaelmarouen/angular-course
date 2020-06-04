@@ -27,4 +27,7 @@ export class ProductDetailComponent  {
   goToProducts(){
     this.router.navigate(['/products'])
   }
+  editProducts(id){
+    this.router.navigate(['/products/'+id+'/edit/'])
+  }
 }

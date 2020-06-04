@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 const HTTP_URL_PATTERN: string =
   '^((http[s]?):\\/)\\/?([^:\\/\\s]+)((\\/\\w+)*)([\\w\\-\\.]+[^#?\\s]+)(.*)?(#[\\w\\-]+)?$'
@@ -18,7 +19,7 @@ export class ProductEditComponent{
       id: [null],
       productName: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(80)]],
       productCode: [''],
-      releaseDate: [new Date()],
+      releaseDate: [formatDate(new Date(), 'dd-MM-yyyy', 'en-US')],
       description: [''],
       price: [0, Validators.min(0)],
       starRating: [0, [Validators.min(0), Validators.max(5)]],

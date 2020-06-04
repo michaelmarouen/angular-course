@@ -1,1 +1,83 @@
-<p>product-edit works!</p>
+<div class="container">
+    <form [formGroup]="productForm">
+        <div class="text-center">
+        <!--<img [src]="product.imageUrl" class="rounded" [alt]="product.productName">-->
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Nom produit:    </span>
+            </div>
+            <input type="text" class="form-control" id="productName" formControlName="productName" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div *ngIf="productForm.get('productName').invalid && (productForm.get('productName').dirty || productForm.get('productName').touched)">
+            <div *ngIf="productForm.get('productName').errors.required">
+                The name is required
+            </div>
+            <div *ngIf="productForm.get('productName').errors.minlength as minlength">
+                The name should be at least {{ minlength.requiredLength }} (actual: {{ minlength.actualLength }})
+            </div>
+            <div *ngIf="productForm.get('productName').errors.maxlength as maxlength">
+                The name should be {{ maxlength.requiredLength }} max length (actual: {{ maxlength.actualLength }})
+            </div>
+        </div>
+        <div class="input-group mb-3 disabled">
+            <div class="input-group-prepend"
+            >
+                <span class="input-group-text" id="inputGroup-sizing-default">Code produit: </span>
+            </div>
+            <input type="text" class="form-control " id="productCode" formControlName="productCode" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Description produit: </span>
+            </div>
+            <input type="text" class="form-control" id="description" formControlName="description" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div *ngIf="productForm.get('description').invalid && (productForm.get('description').dirty || productForm.get('description').touched)">
+            <div *ngIf="productForm.get('description').errors.required">
+                The description is required
+            </div>
+            <div *ngIf="productForm.get('description').errors.minlength as minlength">
+                The description should be at least {{ minlength.requiredLength }} (actual: {{ minlength.actualLength }})
+            </div>
+            <div *ngIf="productForm.get('description').errors.maxlength as maxlength">
+                The description should be {{ maxlength.requiredLength }} max length (actual: {{ maxlength.actualLength }})
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Date publication: </span>
+            </div>
+            <input type="text" class="form-control" id="releaseDate" formControlName="releaseDate" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div *ngIf="productForm.get('releaseDate').invalid && (productForm.get('releaseDate').dirty || productForm.get('releaseDate').touched)">
+            <div *ngIf="productForm.get('releaseDate').errors.required">
+                The date is required
+            </div>
+            <div *ngIf="productForm.get('releaseDate').errors.minlength as minlength">
+                The date should be at least {{ minlength.requiredLength }} (actual: {{ minlength.actualLength }})
+            </div>
+            <div *ngIf="productForm.get('releaseDate').errors.maxlength as maxlength">
+                The date should be {{ maxlength.requiredLength }} max length (actual: {{ maxlength.actualLength }})
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Prix: </span>
+            </div>
+            <input type="number" class="form-control" id="price" formControlName="price" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div *ngIf="productForm.get('price').invalid && (productForm.get('description').dirty || productForm.get('price').touched)">
+            <div *ngIf="productForm.get('price').errors.required">
+                The price is required
+            </div>
+            <div *ngIf="productForm.get('price').errors.min as min">
+                The price should be at least {{ min }} 
+            </div>
+            <div *ngIf="productForm.get('price').errors.maxlength as maxlength">
+                The price should be {{ maxlength.requiredLength }} max length (actual: {{ maxlength.actualLength }})
+            </div>
+        </div>
+        <app-star></app-star>
+    </form>
+</div>
