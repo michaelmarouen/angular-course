@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="productForm">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <div class="text-center">
         <!--<img [src]="product.imageUrl" class="rounded" [alt]="product.productName">-->
         </div>
@@ -7,7 +7,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Nom produit:    </span>
             </div>
-            <input type="text" class="form-control" id="productName" formControlName="productName" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" class="form-control" id="productName" required formControlName="productName" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div *ngIf="productForm.get('productName').invalid && (productForm.get('productName').dirty || productForm.get('productName').touched)">
             <div *ngIf="productForm.get('productName').errors.required">
@@ -31,7 +31,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Description produit: </span>
             </div>
-            <input type="text" class="form-control" id="description" formControlName="description" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" class="form-control" id="description" required formControlName="description" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div *ngIf="productForm.get('description').invalid && (productForm.get('description').dirty || productForm.get('description').touched)">
             <div *ngIf="productForm.get('description').errors.required">
@@ -48,7 +48,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Date publication: </span>
             </div>
-            <input type="text" class="form-control" id="releaseDate" formControlName="releaseDate" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" class="form-control" id="releaseDate" required formControlName="releaseDate" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div *ngIf="productForm.get('releaseDate').invalid && (productForm.get('releaseDate').dirty || productForm.get('releaseDate').touched)">
             <div *ngIf="productForm.get('releaseDate').errors.required">
@@ -65,7 +65,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Prix: </span>
             </div>
-            <input type="number" class="form-control" id="price" formControlName="price" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="number" class="form-control" id="price" required formControlName="price" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div *ngIf="productForm.get('price').invalid && (productForm.get('description').dirty || productForm.get('price').touched)">
             <div *ngIf="productForm.get('price').errors.required">
@@ -74,10 +74,8 @@
             <div *ngIf="productForm.get('price').errors.min as min">
                 The price should be at least {{ min }} 
             </div>
-            <div *ngIf="productForm.get('price').errors.maxlength as maxlength">
-                The price should be {{ maxlength.requiredLength }} max length (actual: {{ maxlength.actualLength }})
-            </div>
         </div>
         <app-star></app-star>
+        <button type="submit" class="btn btn-success"  [disabled]="productForm.invalid">Save!</button>
     </form>
 </div>
