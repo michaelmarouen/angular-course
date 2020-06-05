@@ -5,6 +5,12 @@
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Id produit:    </span>
+            </div>
+            <input type="number" class="form-control" id="id" formControlName="id" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Nom produit:    </span>
             </div>
             <input type="text" class="form-control" id="productName" required formControlName="productName" aria-label="Default" aria-describedby="inputGroup-sizing-default">
@@ -75,7 +81,20 @@
                 The price should be at least {{ min }} 
             </div>
         </div>
-        <app-star></app-star>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Url image :</span>
+            </div>
+            <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Evaluations :</span>
+            </div>
+            <input type="number" class="form-control" id="starRating" required formControlName="starRating" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <!--<app-star [(rating)]=starRating formControlName="starRating" (ratingChanged)="starRating = $event"></app-star>-->
+        </div>
         <button type="submit" class="btn btn-success"  [disabled]="productForm.invalid">Save!</button>
     </form>
 </div>

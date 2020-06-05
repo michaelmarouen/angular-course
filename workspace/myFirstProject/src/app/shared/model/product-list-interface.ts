@@ -11,6 +11,6 @@ export interface IProduits{
     price : number;
     starRating : number;
    // imageUrl : IiProduits[];
-   imageUrl : string;
+    imageUrl : string;
     zoom : boolean;
 }
